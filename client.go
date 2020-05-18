@@ -284,7 +284,7 @@ func (amazonPay *AmazonPay) GetBillingAgreementDetails(billingAgreementID string
 	var params = Params{
 		"Action":                   "GetBillingAgreementDetails",
 		"AmazonBillingAgreementId": billingAgreementID,
-		"AccessToken":      accessToken,
+		"AddressConsentToken":      accessToken,
 	}
 
 	err = amazonPay.Post(params, &result)
