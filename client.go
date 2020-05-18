@@ -61,11 +61,11 @@ func (amazonPay *AmazonPay) ConfirmOrderReference(orderReferenceID string) error
 }
 
 // GetOrderReferenceDetails Returns the details and current state of the Order Reference object.
-func (amazonPay *AmazonPay) GetOrderReferenceDetails(orderReferenceID string, addressToken string) (result GetOrderReferenceDetailsResponse, err error) {
+func (amazonPay *AmazonPay) GetOrderReferenceDetails(orderReferenceID string, accessToken string) (result GetOrderReferenceDetailsResponse, err error) {
 	var params = Params{
 		"Action":                 "GetOrderReferenceDetails",
 		"AmazonOrderReferenceId": orderReferenceID,
-		"AddressToken":           addressToken,
+		"AccessToken":           accessToken,
 	}
 
 	err = amazonPay.Post(params, &result)
@@ -280,11 +280,11 @@ func (amazonPay *AmazonPay) CreateOrderReferenceForId(id string, idType string, 
 }
 
 // GetBillingAgreementDetails returns the details and current state of the Billing Agreement object.
-func (amazonPay *AmazonPay) GetBillingAgreementDetails(billingAgreementID string, addressToken string) (result GetBillingAgreementDetailsResponse, err error) {
+func (amazonPay *AmazonPay) GetBillingAgreementDetails(billingAgreementID string, accessToken string) (result GetBillingAgreementDetailsResponse, err error) {
 	var params = Params{
 		"Action":                   "GetBillingAgreementDetails",
 		"AmazonBillingAgreementId": billingAgreementID,
-		"AddressToken":      addressToken,
+		"AccessToken":      accessToken,
 	}
 
 	err = amazonPay.Post(params, &result)

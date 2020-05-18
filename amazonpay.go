@@ -26,7 +26,7 @@ type AmazonPayService interface {
 	GetProfile(token string) (profile Profile, err error)
 	SetOrderReferenceDetails(orderReferenceID string, attrs OrderReferenceAttributes) (result SetOrderReferenceDetailsResult, err error)
 	ConfirmOrderReference(orderReferenceID string) error
-	GetOrderReferenceDetails(orderReferenceID string, addressToken string) (result GetOrderReferenceDetailsResponse, err error)
+	GetOrderReferenceDetails(orderReferenceID string, accessToken string) (result GetOrderReferenceDetailsResponse, err error)
 	Authorize(orderReferenceID string, authorizationReferenceID string, amount Price, input AuthorizeInput) (result AuthorizeResponse, err error)
 	GetAuthorizationDetails(authorizationID string) (result GetAuthorizationDetailsResponse, err error)
 	CloseAuthorization(authorizationID string, closureReason string) error
@@ -38,7 +38,7 @@ type AmazonPayService interface {
 	GetRefundDetails(refundID string) (result GetRefundDetailsResponse, err error)
 	Post(params Params, response interface{}) error
 	Sign(message string) string
-	GetBillingAgreementDetails(billingAgreementID string, addressToken string) (result GetBillingAgreementDetailsResponse, err error)
+	GetBillingAgreementDetails(billingAgreementID string, accessToken string) (result GetBillingAgreementDetailsResponse, err error)
 	SetBillingAgreementDetails(billingAgreementID string, attrs BillingAgreementAttributes) (result SetBillingAgreementDetailsResponse, err error)
 	ValidateBillingAgreement(billingAgreementID string) (result ValidateBillingAgreementResponse, err error)
 }
