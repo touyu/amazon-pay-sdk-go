@@ -38,7 +38,7 @@ type AmazonPayService interface {
 	GetRefundDetails(refundID string) (result GetRefundDetailsResponse, err error)
 	Post(params Params, response interface{}) error
 	Sign(message string) string
-	GetBillingAgreementDetails(billingAgreementID string, addressConsentToken string) (result GetBillingAgreementDetailsResponse, err error)
+	GetBillingAgreementDetails(billingAgreementID string, accessToken string) (result GetBillingAgreementDetailsResponse, err error)
 	SetBillingAgreementDetails(billingAgreementID string, attrs BillingAgreementAttributes) (result SetBillingAgreementDetailsResponse, err error)
 	ValidateBillingAgreement(billingAgreementID string) (result ValidateBillingAgreementResponse, err error)
 }

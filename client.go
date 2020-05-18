@@ -280,11 +280,11 @@ func (amazonPay *AmazonPay) CreateOrderReferenceForId(id string, idType string, 
 }
 
 // GetBillingAgreementDetails returns the details and current state of the Billing Agreement object.
-func (amazonPay *AmazonPay) GetBillingAgreementDetails(billingAgreementID string, addressConsentToken string) (result GetBillingAgreementDetailsResponse, err error) {
+func (amazonPay *AmazonPay) GetBillingAgreementDetails(billingAgreementID string, accessToken string) (result GetBillingAgreementDetailsResponse, err error) {
 	var params = Params{
 		"Action":                   "GetBillingAgreementDetails",
 		"AmazonBillingAgreementId": billingAgreementID,
-		"AddressConsentToken":      addressConsentToken,
+		"AddressToken":      accessToken,
 	}
 
 	err = amazonPay.Post(params, &result)
