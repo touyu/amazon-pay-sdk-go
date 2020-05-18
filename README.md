@@ -5,13 +5,13 @@ Amazon Pay SDK for Golang
 ## Install
 
 ```sh
-go get github.com/qor/amazon-pay-sdk-go
+go get github.com/touyu/amazon-pay-sdk-go
 ```
 
 ## Usage
 
 ```go
-import amazonpay "github.com/qor/amazon-pay-sdk-go"
+import amazonpay "github.com/touyu/amazon-pay-sdk-go"
 
 func main() {
   var client = amazonpay.New(&amazonpay.Config{
