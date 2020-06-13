@@ -91,6 +91,44 @@ func TestAuthorizeResponse(t *testing.T) {
 	fmt.Printf("%#v", detail)
 }
 
+func TestAuthorizationDetailsResponse(t *testing.T) {
+	resp := `<GetAuthorizationDetailsResponse xmlns="https://mws.amazonservices.com/schema/OffAmazonPayments/2013-01-01">  
+  <GetAuthorizationDetailsResult>  
+    <AuthorizationDetails>  
+      <AmazonAuthorizationId>  
+        P01-1234567-1234567-0000001  
+      </AmazonAuthorizationId>  
+<AuthorizationReferenceId>test_authorize_1</AuthorizationReferenceId>  
+      <SellerAuthorizationNote>Lorem ipsum</SellerAuthorizationNote>  
+      <AuthorizationAmount>  
+        <CurrencyCode>USD</CurrencyCode>  
+        <Amount>94.50</Amount>  
+      </AuthorizationAmount>  
+      <AuthorizationFee>  
+        <CurrencyCode>USD</CurrencyCode>  
+        <Amount>0</Amount>  
+      </AuthorizationFee>  
+      <AuthorizationStatus>  
+        <State>Open</State>  
+        <LastUpdateTimestamp>2012-12-10T19%3A01%3A11Z</LastUpdateTimestamp>  
+      </AuthorizationStatus>  
+      <CreationTimestamp>2012-12-10T19%3A01%3A11Z</CreationTimestamp>  
+      <ExpirationTimestamp>2013-01-10T19:10:16Z</ExpirationTimestamp>  
+    </AuthorizationDetails>  
+  </GetAuthorizationDetailsResult>  
+  <ResponseMetadata>  
+    <RequestId>b4ab4bc3-c9ea-44f0-9a3d-67cccef565c6</RequestId>  
+  </ResponseMetadata>  
+</GetAuthorizationDetailsResponse>`
+
+	detail := GetAuthorizationDetailsResponse{}
+	if err := xml.Unmarshal([]byte(resp), &detail); err != nil {
+		t.Errorf("no error should get when unmarshal order reference detail, but got %v", err)
+	}
+
+	fmt.Printf("%#v", detail)
+}
+
 func TestErrorResponse(t *testing.T) {
 	resp := `<ErrorResponse xmlns="http://mws.amazonservices.com/schema/OffAmazonPayments/2013-01-01">
 	<Error>
