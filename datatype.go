@@ -156,9 +156,9 @@ type AuthorizationDetails struct {
 	AuthorizationReferenceID string `xml:"AuthorizationReferenceId"`
 	SellerAuthorizationNote  string
 	AuthorizationAmount      Price
-	CaptureAmount            Price
+	CapturedAmount           Price
 	AuthorizationFee         Price
-	IDList                   []string `xml:"IdList"`
+	IDList                   IDList `xml:"IdList"`
 	CreationTimestamp        *time.Time
 	ExpirationTimestamp      *time.Time
 	AuthorizationStatus      Status
@@ -182,7 +182,7 @@ type CaptureDetails struct {
 	CaptureAmount      Price
 	RefundAmount       Price
 	CaptureFee         Price
-	IDList             []string `xml:"IdList"`
+	IDList             IDList `xml:"IdList"`
 	CreationTimestamp  *time.Time
 	CaptureStatus      Status
 	SoftDescriptor     string
@@ -222,7 +222,7 @@ type OrderReferenceDetails struct {
 	Constraints            []Constraint
 	CreationTimestamp      *time.Time
 	ExpirationTimestamp    *time.Time
-	IDList                 []string `xml:"IdList"`
+	IDList                 IDList `xml:"IdList"`
 }
 
 // OrderReferenceStatus the current state of the Order Reference object.
@@ -342,4 +342,8 @@ type RefundNotification struct {
 // BillingAgreementNotification billing agreement notification
 type BillingAgreementNotification struct {
 	BillingAgreementDetails BillingAgreementDetails
+}
+
+type IDList struct {
+	Member string `xml:"member"`
 }
