@@ -65,7 +65,7 @@ func (amazonPay *AmazonPay) GetOrderReferenceDetails(orderReferenceID string, ac
 	var params = Params{
 		"Action":                 "GetOrderReferenceDetails",
 		"AmazonOrderReferenceId": orderReferenceID,
-		"AccessToken":           accessToken,
+		"AccessToken":            accessToken,
 	}
 
 	err = amazonPay.Post(params, &result)
@@ -76,7 +76,7 @@ func (amazonPay *AmazonPay) GetOrderReferenceDetails(orderReferenceID string, ac
 // AuthorizeInput authorize input struct
 type AuthorizeInput struct {
 	SellerAuthorizationNote string
-	TransactionTimedOut     uint
+	TransactionTimeout      uint
 	CaptureNow              bool
 	SoftDecriptor           string
 }
